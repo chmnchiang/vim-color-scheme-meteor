@@ -95,9 +95,15 @@ local theme = lush(function()
     DiffDelete   { bg = hsl('#5c0000'), fg = hsl('#5c0000').lighten(70).desaturate(10) }, -- diff mode: Deleted line |diff.txt|
     DiffChange   { bg = hsl('#000040'), fg = hsl('#000040').lighten(80).desaturate(30) }, -- diff mode: Changed line |diff.txt|
     DiffText     { bg = hsl('#005f5f'), fg = hsl('#005f5f').lighten(70).desaturate(30) }, -- diff mode: Changed text within a changed line |diff.txt|
-    GitGutterAdd { fg = hsl('#00aa00') },
-    GitGutterChange { fg = hsl('#cccc22') },
-    GitGutterDelete { fg = hsl('#ff2222') },
+    DiffSignAdd  { bg = SignColumn.bg, fg = hsl('#00aa00') },
+    DiffSignChange { bg = SignColumn.bg, fg = hsl('#cccc22') },
+    DiffSignDelete { bg = SignColumn.bg, fg = hsl('#ff2222') },
+    GitGutterAdd { DiffSignAdd },
+    GitGutterChange { DiffSignChange },
+    GitGutterDelete { DiffSignDelete },
+    SignifySignAdd { DiffSignAdd },
+    SignifySignChange { DiffSignChange },
+    SignifySignDelete { DiffSignDelete },
 
     Visual       { bg = hsl('#404040') }, -- Visual mode selection
     VisualNOS    { bg = hsl('#404040') }, -- Visual mode selection when vim is "Not Owning the Selection".
