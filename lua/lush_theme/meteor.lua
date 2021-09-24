@@ -64,7 +64,7 @@ local theme = lush(function()
 
     Normal       { fg = normal_fg }, -- normal text
     SpecialKey   { fg = hsl('#d75f87') }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    VertSplit    { fg = hsl('#ffff5f') }, -- the column separating vertically split windows
+    VertSplit    { fg = hsl('#aaaa55') }, -- the column separating vertically split windows
     SignColumn   { bg = hsl('#1c1c1c'), fg = hsl('#6c6c6c') }, -- column where |signs| are displayed
     NonText      { fg = hsl('#d75f87') }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Directory    { fg = hsl('#00afff') }, -- directory names (and other special names in listings)
@@ -174,6 +174,14 @@ local theme = lush(function()
     LspNumInformation        { }, -- Used for "Information" signs in sign column
     LspNumHint               { LspNumInformation }, -- Used for "Hint" signs in sign column
 
+    NormalFloat { Pmenu }, -- Normal text in floating windows.
+    FloatBorder { bg = Pmenu.bg, fg = Pmenu.bg.lighten(20).desaturate(20) }, -- Border of floating windows.
+    LspDiagnosticsFloatingError          { NormalFloat }, -- Used to color "Error" diagnostic messages in diagnostics float
+    LspDiagnosticsFloatingWarning        { NormalFloat }, -- Used to color "Warning" diagnostic messages in diagnostics float
+    LspDiagnosticsFloatingInformation    { NormalFloat }, -- Used to color "Information" diagnostic messages in diagnostics float
+    LspDiagnosticsFloatingHint           { NormalFloat }, -- Used to color "Hint" diagnostic messages in diagnostics float
+
+
     -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorColumn { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -183,7 +191,6 @@ local theme = lush(function()
     -- TermCursorNC { }, -- cursor in an unfocused terminal
     -- MsgArea      { }, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-    -- NormalFloat  { }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
     -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     -- Whitespace   { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -224,11 +231,6 @@ local theme = lush(function()
     -- LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
     -- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
     -- LspDiagnosticsUnderlineHint          { }, -- Used to underline "Hint" diagnostics
-
-    -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
-    -- LspDiagnosticsFloatingWarning        { }, -- Used to color "Warning" diagnostic messages in diagnostics float
-    -- LspDiagnosticsFloatingInformation    { }, -- Used to color "Information" diagnostic messages in diagnostics float
-    -- LspDiagnosticsFloatingHint           { }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
     -- These groups are for the neovim tree-sitter highlights.
     -- As of writing, tree-sitter support is a WIP, group names may change.
