@@ -123,7 +123,7 @@ local theme = lush(function()
     Comment      { fg = hsluv(0, 0, 55), gui = "italic" }, -- any comment
 
     String      { fg = hsluv(25, 80, 70) }, -- (preferred) any constant
-    Constant     { fg = hsluv(40, 85, 75) }, --   a string constant: "this is a string"
+    Constant     { fg = hsluv(330, 85, 75) }, --   a string constant: "this is a string"
     Character     { fg = hsluv(55, 90, 80) }, --  a character constant: 'c', '\n'
     Number         { fg = hsluv(285, 100, 70) }, --   a number constant: 234, 0xff
     --Number         { fg = hsluv(25, 70, 80) }, --   a number constant: 234, 0xff
@@ -167,21 +167,20 @@ local theme = lush(function()
     SpellLocal   { SpellCap }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare    { SpellCap }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
 
-    LspDiagnosticsSignError              { bg = SignColumn.bg, fg = hsluv('#d70000') }, -- Used for "Error" signs in sign column
-    LspDiagnosticsSignWarning            { bg = SignColumn.bg, fg = hsluv('#ff8700') }, -- Used for "Warning" signs in sign column
-    LspDiagnosticsSignInformation        { bg = SignColumn.bg, fg = hsluv('#5fd7ff') }, -- Used for "Information" signs in sign column
-    LspDiagnosticsSignHint               { LspDiagnosticsSignInformation }, -- Used for "Hint" signs in sign column
-    LspSagaLightBulbSign                 { LspDiagnosticsSignHint }, -- Used for "Hint" signs in sign column
+    DiagnosticSignError             { bg = SignColumn.bg, fg = hsluv('#d70000') }, -- Used for "Error" signs in sign column
+    DiagnosticSignWarn              { bg = SignColumn.bg, fg = hsluv('#ff8700') }, -- Used for "Warning" signs in sign column
+    DiagnosticSignInfo              { bg = SignColumn.bg, fg = hsluv('#5fd7ff') }, -- Used for "Information" signs in sign column
+    DiagnosticSignHint              { DiagnosticSignInfo }, -- Used for "Hint" signs in sign column
 
-    LspNumError              { bg = hsluv('#870000') }, -- Used for "Error" signs in sign column
-    LspNumWarning            { bg = hsluv('#af5f00') }, -- Used for "Warning" signs in sign column
-    LspNumInformation        { }, -- Used for "Information" signs in sign column
-    LspNumHint               { LspNumInformation }, -- Used for "Hint" signs in sign column
+    DiagnosticNumError              { bg = hsluv('#870000') }, -- Used for "Error" signs in sign column
+    DiagnosticNumWarn               { bg = hsluv('#af5f00') }, -- Used for "Warning" signs in sign column
+    DiagnosticNumInfo               { }, -- Used for "Information" signs in sign column
+    DiagnosticNumHint               { DiagnosticNumInfo }, -- Used for "Hint" signs in sign column
 
-    LspDiagnosticsFloatingError          { NormalFloat }, -- Used to color "Error" diagnostic messages in diagnostics float
-    LspDiagnosticsFloatingWarning        { NormalFloat }, -- Used to color "Warning" diagnostic messages in diagnostics float
-    LspDiagnosticsFloatingInformation    { NormalFloat }, -- Used to color "Information" diagnostic messages in diagnostics float
-    LspDiagnosticsFloatingHint           { NormalFloat }, -- Used to color "Hint" diagnostic messages in diagnostics float
+    DiagnosticFloatingError         { NormalFloat }, -- Used to color "Error" diagnostic messages in diagnostics float
+    DiagnosticFloatingWarn          { NormalFloat }, -- Used to color "Warning" diagnostic messages in diagnostics float
+    DiagnosticFloatingInfo          { NormalFloat }, -- Used to color "Information" diagnostic messages in diagnostics float
+    DiagnosticFloatingHint          { NormalFloat }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
 
     -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
