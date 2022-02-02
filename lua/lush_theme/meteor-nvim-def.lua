@@ -182,6 +182,8 @@ local theme = lush(function()
     DiagnosticFloatingInfo          { NormalFloat }, -- Used to color "Information" diagnostic messages in diagnostics float
     DiagnosticFloatingHint          { NormalFloat }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
+    -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
+    helpHyperTextJump               { gui = "underline", fg = hsluv('#80b0ff') },
 
     -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
@@ -202,7 +204,6 @@ local theme = lush(function()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
     -- Bold       { gui = "bold" },
     -- Italic     { gui = "italic" },
 
