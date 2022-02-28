@@ -185,6 +185,16 @@ local theme = lush(function()
     -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
     helpHyperTextJump               { gui = "underline", fg = hsluv('#80b0ff') },
 
+    IndentGuidesEven                { fg = hsluv(0, 0, 40) },
+    IndentGuidesOdd                 { fg = hsluv(0, 0, 30) },
+
+    DapBreakpoint { fg = hsluv('#ff0000'), bg = SignColumn.bg },
+    DapBreakpointCondition { fg = hsluv('#ff5500'), bg = SignColumn.bg },
+    DapLogPoint { fg = hsluv('#439ebf'), bg = SignColumn.bg },
+    DapBreakpointRejected { fg = hsluv(0, 0, 70), bg = SignColumn.bg },
+    DapStopped { fg = hsluv(0, 0, 100), bg = SignColumn.bg },
+    DapStoppedLine { bg = hsluv(125, 60, 20) },
+
     -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorColumn { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
