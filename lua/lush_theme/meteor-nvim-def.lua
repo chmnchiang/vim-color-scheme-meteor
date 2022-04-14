@@ -65,7 +65,6 @@ local theme = lush(function()
     Normal       { fg = hsluv(0, 0, 90) }, -- normal text
     SpecialKey   { fg = hsluv('#d75f87') }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     VertSplit    { fg = hsluv('#aaaa55') }, -- the column separating vertically split windows
-    NonText      { fg = hsluv('#d75f87') }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Directory    { fg = hsluv('#00afff') }, -- directory names (and other special names in listings)
     Title        { fg = strong_fg, gui = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
 
@@ -121,6 +120,9 @@ local theme = lush(function()
     TabLineFill  { bg = hsluv('#262626') }, -- tab pages line, active tab page label
 
     Comment      { fg = hsluv(0, 0, 55), gui = "italic" }, -- any comment
+    SpecialHint  { fg = hsluv(0, 0, 35), gui = "italic" }, -- any comment
+    NonText      { fg = hsluv(0, 0, 35) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Whitespace   { fg = hsluv(0, 0, 35) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 
     String      { fg = hsluv(25, 80, 70) }, -- (preferred) any constant
     Constant     { fg = hsluv(330, 85, 75) }, --   a string constant: "this is a string"
