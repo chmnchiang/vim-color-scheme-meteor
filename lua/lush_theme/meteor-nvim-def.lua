@@ -48,7 +48,8 @@ local hsluv = lush.hsluv
 local left_column_bg = hsluv(0, 0, 15)
 local strong_fg = hsluv('#d7af00')
 
-local theme = lush(function()
+local theme = lush(function(injected_functions)
+  local sym = injected_functions.sym
   return {
     -- The following are all the Neovim default highlight groups from the docs
     -- as of 0.5.0-nightly-446, to aid your theme creation. Your themes should
@@ -184,6 +185,10 @@ local theme = lush(function()
     DiagnosticFloatingInfo          { NormalFloat }, -- Used to color "Information" diagnostic messages in diagnostics float
     DiagnosticFloatingHint          { NormalFloat }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
+    LspReferenceText                { Search }, -- used for highlighting "text" references
+    LspReferenceRead                { Search }, -- used for highlighting "read" references
+    LspReferenceWrite               { Search }, -- used for highlighting "write" references
+
     -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
     helpHyperTextJump               { gui = "underline", fg = hsluv('#80b0ff') },
 
@@ -226,9 +231,6 @@ local theme = lush(function()
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
 
-    -- LspReferenceText                     { }, -- used for highlighting "text" references
-    -- LspReferenceRead                     { }, -- used for highlighting "read" references
-    -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
     -- LspDiagnosticsDefaultError           { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     -- LspDiagnosticsDefaultWarning         { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
@@ -256,17 +258,17 @@ local theme = lush(function()
     -- TSBoolean            { };    -- For booleans.
     -- TSCharacter          { };    -- For characters.
     -- TSComment            { };    -- For comment blocks.
-    TSConstructor        { Operator };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
+    sym('@constructor')     { Operator };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
     -- TSConditional        { };    -- For keywords related to conditionnals.
     -- TSConstant           { };    -- For constants
-    TSConstBuiltin       { Constant };    -- For constant that are built in the language: `nil` in Lua.
+    sym('@constant.builtin')       { Constant };    -- For constant that are built in the language: `nil` in Lua.
     -- TSConstMacro         { };    -- For constants that are defined by macros: `NULL` in C.
     -- TSError              { };    -- For syntax/parser errors.
     -- TSException          { };    -- For exception related keywords.
     -- TSField              { };    -- For fields.
     -- TSFloat              { };    -- For floats.
     -- TSFunction           { };    -- For function (calls and definitions).
-    TSFuncBuiltin        { Operator };    -- For builtin functions: `table.insert` in Lua.
+    sym('@function.builtin')        { Operator };    -- For builtin functions: `table.insert` in Lua.
     -- TSFuncMacro          { };    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
     -- TSInclude            { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     -- TSKeyword            { };    -- For keywords that don't fall in previous categories.
@@ -291,7 +293,7 @@ local theme = lush(function()
     -- TSType               { };    -- For types.
     -- TSTypeBuiltin        { };    -- For builtin types.
     -- TSVariable           { };    -- Any variable name that does not have another highlight.
-    TSVariableBuiltin    { fg = hsluv(350, 70, 70) };    -- Variable names that are defined by the languages, like `this` or `self`.
+    sym('@variable.builtin')    { fg = hsluv(350, 70, 70) };    -- Variable names that are defined by the languages, like `this` or `self`.
     -- TSTag                { };    -- Tags like html tag names.
     -- TSTagDelimiter       { };    -- Tag delimiter like `<` `>` `/`
     -- TSText               { };    -- For strings considered text in a markup language.
