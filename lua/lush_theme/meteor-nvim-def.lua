@@ -120,17 +120,17 @@ local theme = lush(function(injected_functions)
     TabLineSel   { bg = hsluv('#282828').lighten(20), fg = Normal.fg }, -- tab pages line, where there are no labels
     TabLineFill  { bg = hsluv('#262626') }, -- tab pages line, active tab page label
 
-    Comment      { fg = hsluv(0, 0, 55), gui = "italic" }, -- any comment
+    Comment      { fg = hsluv(0, 0, 60), gui = "italic" }, -- any comment
     SpecialHint  { fg = hsluv(0, 0, 35), gui = "italic" }, -- any comment
     NonText      { fg = hsluv(0, 0, 35) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Whitespace   { fg = hsluv(0, 0, 35) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 
-    String      { fg = hsluv(25, 80, 70) }, -- (preferred) any constant
-    Constant     { fg = hsluv(330, 85, 75) }, --   a string constant: "this is a string"
+    Constant     { fg = hsluv(320, 90, 85) }, -- (preferred) any constant
+    Boolean        { Constant }, --  a boolean constant: TRUE, false
+    String      { fg = hsluv(25, 80, 70) }, --  a string constant: "this is a string"
     Character     { fg = hsluv(55, 90, 80) }, --  a character constant: 'c', '\n'
     Number         { fg = hsluv(285, 100, 70) }, --   a number constant: 234, 0xff
     --Number         { fg = hsluv(25, 70, 80) }, --   a number constant: 234, 0xff
-    Boolean        { Constant }, --  a boolean constant: TRUE, false
     Float          { Number }, --    a floating point constant: 2.3e10
 
     Identifier     { Normal }, -- (preferred) any variable name
@@ -276,6 +276,7 @@ local theme = lush(function(injected_functions)
     -- TSLabel              { };    -- For labels: `label:` in C and `:label:` in Lua.
     -- TSMethod             { };    -- For method calls and definitions.
     TSNamespace          { Identifier };    -- For identifiers referring to modules and namespaces.
+    sym('@lsp.type.namespace')        { Identifier };    -- For builtin functions: `table.insert` in Lua.
     -- TSNone               { };    -- TODO: docs
     -- TSNumber             { };    -- For all numbers
     -- TSOperator           { };    -- For any operator: `+`, but also `->` and `*` in C.
@@ -291,12 +292,17 @@ local theme = lush(function(injected_functions)
     -- TSStringEscape       { };    -- For escape characters within a string.
     -- TSSymbol             { };    -- For identifiers referring to symbols or atoms.
     -- TSType               { };    -- For types.
+    sym('@lsp.type.typeAlias')     { Type },
     -- TSTypeBuiltin        { };    -- For builtin types.
     -- TSVariable           { };    -- Any variable name that does not have another highlight.
-    sym('@variable.builtin')    { fg = hsluv(350, 70, 70) };    -- Variable names that are defined by the languages, like `this` or `self`.
+    sym('@variable.builtin')    { fg = hsluv(350, 70, 70) },    -- Variable names that are defined by the languages, like `this` or `self`.
     -- TSTag                { };    -- Tags like html tag names.
     -- TSTagDelimiter       { };    -- Tag delimiter like `<` `>` `/`
     -- TSText               { };    -- For strings considered text in a markup language.
+    sym('@text.note')    { Todo },    -- Variable names that are defined by the languages, like `this` or `self`.
+    sym('@text.danger')    { fg = hsluv(25, 100, 65) },    -- Variable names that are defined by the languages, like `this` or `self`.
+    sym('@lsp.type.comment') {},
+    -- NOTE:
     -- TSEmphasis           { };    -- For text to be represented with emphasis.
     -- TSUnderline          { };    -- For text to be represented with an underline.
     -- TSStrike             { };    -- For strikethrough text.
