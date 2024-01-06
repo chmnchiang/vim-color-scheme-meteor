@@ -65,7 +65,7 @@ local theme = lush(function(injected_functions)
 
     Normal       { fg = hsluv(0, 0, 90) }, -- normal text
     SpecialKey   { fg = hsluv('#d75f87') }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    VertSplit    { fg = hsluv('#aaaa55') }, -- the column separating vertically split windows
+    WinSeparator { fg = hsluv(70, 40, 70) }, -- the column separating vertically split windows
     Directory    { fg = hsluv('#00afff') }, -- directory names (and other special names in listings)
     Title        { fg = strong_fg, gui = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
 
