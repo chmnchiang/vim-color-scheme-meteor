@@ -63,40 +63,41 @@ local theme = lush(function(injected_functions)
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    Normal       { fg = hsluv(0, 0, 90) }, -- normal text
-    SpecialKey   { fg = hsluv('#d75f87') }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    WinSeparator { fg = hsluv(70, 40, 70) }, -- the column separating vertically split windows
-    Directory    { fg = hsluv('#00afff') }, -- directory names (and other special names in listings)
-    Title        { fg = strong_fg, gui = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
+    Normal { fg = hsluv(0, 0, 90) },                                                 -- normal text
+    SpecialKey { fg = hsluv('#d75f87') },                                            -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    WinSeparator { fg = hsluv(70, 40, 70) },                                         -- the column separating vertically split windows
+    Directory { fg = hsluv('#00afff') },                                             -- directory names (and other special names in listings)
+    Title { fg = strong_fg, gui = 'bold' },                                          -- titles for output from ":set all", ":autocmd" etc.
 
-    Cursor       { bg = hsluv('#ffffff') }, -- character under the cursor
-    CursorIM     { Cursor }, -- like Cursor, but used when in IME mode |CursorIM|
-    MatchParen   { bg = hsluv('#585858') }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-    FoldColumn   { bg = hsluv('#1c1c1c'), fg = hsluv('#5fd7ff') }, -- 'foldcolumn'
-    Folded       { bg = hsluv('#000040'), fg = hsluv('#5fd7ff') }, -- line used for closed folds
+    Cursor { bg = hsluv('#ffffff') },                                                -- character under the cursor
+    CursorIM { Cursor },                                                             -- like Cursor, but used when in IME mode |CursorIM|
+    MatchParen { bg = hsluv('#585858') },                                            -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    FoldColumn { bg = hsluv('#1c1c1c'), fg = hsluv('#5fd7ff') },                     -- 'foldcolumn'
+    Folded { bg = hsluv('#000040'), fg = hsluv('#5fd7ff') },                         -- line used for closed folds
 
-    CursorLine   { bg = hsluv(0, 0, 10) }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    LineNr       { bg = hsluv(0, 0, 15), fg = hsluv(0, 0, 45) }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLine { bg = hsluv(0, 0, 10) },                                             -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    LineNr { bg = hsluv(0, 0, 15), fg = hsluv(0, 0, 45) },                           -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr { bg = hsluv(127, 40, 15), fg = hsluv(86, 100, 75), gui = 'bold' }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    SignColumn   { LineNr }, -- column where |signs| are displayed
-    StatusLine   { bg = hsluv(0, 0, 25), fg = hsluv(0, 0, 60) }, -- status line of current window
-    StatusLineNC { bg = hsluv(0, 0, 10), fg = hsluv(0, 0, 40) }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-    ColorColumn  { bg = hsluv('#585858') }, -- used for the columns set with 'colorcolumn'
-    ErrorMsg     { bg = hsluv('#af0000'), fg = Normal.fg }, -- error messages on the command line
-    Question     { fg = strong_fg }, -- |hit-enter| prompt and yes/no questions
-    WarningMsg   { bg = hsluv('#d75f00'), fg = hsluv('#e4e4e4'), gui = 'bold' }, -- warning messages
-    MoreMsg      { fg = strong_fg }, -- |more-prompt|
-    ModeMsg      { fg = strong_fg }, -- 'showmode' message (e.g., "-- INSERT -- ")
+    SignColumn { LineNr },                                                           -- column where |signs| are displayed
+    StatusLine { bg = hsluv(0, 0, 25), fg = hsluv(0, 0, 60) },                       -- status line of current window
+    StatusLineNC { bg = hsluv(0, 0, 10), fg = hsluv(0, 0, 40) },                     -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    ColorColumn { bg = hsluv('#585858') },                                           -- used for the columns set with 'colorcolumn'
+    ErrorMsg { bg = hsluv('#af0000'), fg = Normal.fg },                              -- error messages on the command line
+    Question { fg = strong_fg },                                                     -- |hit-enter| prompt and yes/no questions
+    WarningMsg { bg = hsluv('#d75f00'), fg = hsluv('#e4e4e4'), gui = 'bold' },       -- warning messages
+    MoreMsg { fg = strong_fg },                                                      -- |more-prompt|
+    ModeMsg { fg = strong_fg },                                                      -- 'showmode' message (e.g., "-- INSERT -- ")
 
-    Search       { bg = hsluv('#585858'), fg = hsluv('#ffff5f') }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    IncSearch    { bg = hsluv('#008700'), fg = hsluv('#ffff5f') }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Search { bg = hsluv('#585858'), fg = hsluv('#ffff5f') },                         -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    CurSearch { bg = hsluv('#008700'), fg = hsluv('#ffff5f') },                         -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    IncSearch { bg = hsluv('#008700'), fg = hsluv('#ffff5f') },                      -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute   { }, -- |:substitute| replacement text highlighting
 
-    DiffAdd      { bg = hsluv('#005c00'), fg = hsluv('#005c00').lighten(70).desaturate(30) }, -- diff mode: Added line |diff.txt|
-    DiffDelete   { bg = hsluv('#5c0000'), fg = hsluv('#5c0000').lighten(70).desaturate(10) }, -- diff mode: Deleted line |diff.txt|
-    DiffChange   { bg = hsluv('#000040'), fg = hsluv('#000040').lighten(80).desaturate(30) }, -- diff mode: Changed line |diff.txt|
-    DiffText     { bg = hsluv('#005f5f'), fg = hsluv('#005f5f').lighten(70).desaturate(30) }, -- diff mode: Changed text within a changed line |diff.txt|
-    DiffSignAdd  { bg = SignColumn.bg, fg = hsluv('#00aa00') },
+    DiffAdd { bg = hsluv('#005c00'), fg = hsluv('#005c00').lighten(70).desaturate(30) },    -- diff mode: Added line |diff.txt|
+    DiffDelete { bg = hsluv('#5c0000'), fg = hsluv('#5c0000').lighten(70).desaturate(10) }, -- diff mode: Deleted line |diff.txt|
+    DiffChange { bg = hsluv('#000040'), fg = hsluv('#000040').lighten(80).desaturate(30) }, -- diff mode: Changed line |diff.txt|
+    DiffText { bg = hsluv('#005f5f'), fg = hsluv('#005f5f').lighten(70).desaturate(30) },   -- diff mode: Changed text within a changed line |diff.txt|
+    DiffSignAdd { bg = SignColumn.bg, fg = hsluv('#00aa00') },
     DiffSignChange { bg = SignColumn.bg, fg = hsluv('#cccc22') },
     DiffSignDelete { bg = SignColumn.bg, fg = hsluv('#ff2222') },
     GitGutterAdd { DiffSignAdd },
@@ -106,94 +107,94 @@ local theme = lush(function(injected_functions)
     SignifySignChange { DiffSignChange },
     SignifySignDelete { DiffSignDelete },
 
-    Visual       { bg = hsluv('#404040') }, -- Visual mode selection
-    VisualNOS    { bg = hsluv('#404040') }, -- Visual mode selection when vim is "Not Owning the Selection".
+    Visual { bg = hsluv('#404040') },                                 -- Visual mode selection
+    VisualNOS { bg = hsluv('#404040') },                              -- Visual mode selection when vim is "Not Owning the Selection".
 
-    Pmenu        { bg = hsluv(42, 50, 25), fg = Normal.fg }, -- Popup menu: normal item.
-    PmenuSel     { bg = hsluv(42, 50, 40), fg = Normal.fg }, -- Popup menu: selected item.
-    PmenuSbar    { bg = hsluv('#606060') }, -- Popup menu: scrollbar.
-    PmenuThumb   { bg = hsluv('#cccccc') }, -- Popup menu: Thumb of the scrollbar.
-    NormalFloat { bg = hsluv(42, 30, 20), fg = Normal.fg }, -- Normal text in floating windows.
-    FloatBorder { bg = NormalFloat.bg, fg = hsluv(42, 30, 50) }, -- Border of floating windows.
+    Pmenu { bg = hsluv(42, 50, 25), fg = Normal.fg },                 -- Popup menu: normal item.
+    PmenuSel { bg = hsluv(42, 50, 40), fg = Normal.fg },              -- Popup menu: selected item.
+    PmenuSbar { bg = hsluv('#606060') },                              -- Popup menu: scrollbar.
+    PmenuThumb { bg = hsluv('#cccccc') },                             -- Popup menu: Thumb of the scrollbar.
+    NormalFloat { bg = hsluv(42, 30, 20), fg = Normal.fg },           -- Normal text in floating windows.
+    FloatBorder { bg = NormalFloat.bg, fg = hsluv(42, 30, 50) },      -- Border of floating windows.
 
-    TabLine      { bg = hsluv('#282828'), fg = Normal.fg.darken(30) }, -- tab pages line, not active tab page label
-    TabLineSel   { bg = hsluv('#282828').lighten(20), fg = Normal.fg }, -- tab pages line, where there are no labels
-    TabLineFill  { bg = hsluv('#262626') }, -- tab pages line, active tab page label
+    TabLine { bg = hsluv('#282828'), fg = Normal.fg.darken(30) },     -- tab pages line, not active tab page label
+    TabLineSel { bg = hsluv('#282828').lighten(20), fg = Normal.fg }, -- tab pages line, where there are no labels
+    TabLineFill { bg = hsluv('#262626') },                            -- tab pages line, active tab page label
 
-    Comment      { fg = hsluv(0, 0, 60), gui = "italic" }, -- any comment
-    SpecialHint  { fg = hsluv(0, 0, 35), gui = "italic" }, -- any comment
-    NonText      { fg = hsluv(0, 0, 35) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Whitespace   { fg = hsluv(0, 0, 35) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Comment { fg = hsluv(0, 0, 60), gui = "italic" },                 -- any comment
+    SpecialHint { fg = hsluv(0, 0, 35), gui = "italic" },             -- any comment
+    NonText { fg = hsluv(0, 0, 35) },                                 -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Whitespace { fg = hsluv(0, 0, 35) },                              -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 
-    Constant     { fg = hsluv(320, 90, 85) }, -- (preferred) any constant
-    Boolean        { Constant }, --  a boolean constant: TRUE, false
-    String      { fg = hsluv(25, 80, 70) }, --  a string constant: "this is a string"
-    Character     { fg = hsluv(55, 90, 80) }, --  a character constant: 'c', '\n'
-    Number         { fg = hsluv(285, 100, 70) }, --   a number constant: 234, 0xff
+    Constant { fg = hsluv(320, 90, 85) },                             -- (preferred) any constant
+    Boolean { Constant },                                             --  a boolean constant: TRUE, false
+    String { fg = hsluv(25, 80, 70) },                                --  a string constant: "this is a string"
+    Character { fg = hsluv(55, 90, 80) },                             --  a character constant: 'c', '\n'
+    Number { fg = hsluv(285, 100, 70) },                              --   a number constant: 234, 0xff
     --Number         { fg = hsluv(25, 70, 80) }, --   a number constant: 234, 0xff
-    Float          { Number }, --    a floating point constant: 2.3e10
+    Float { Number },                                                 --    a floating point constant: 2.3e10
 
-    Identifier     { Normal }, -- (preferred) any variable name
-    Function       { Normal }, -- function name (also: methods for classes)
+    Identifier { Normal },                                            -- (preferred) any variable name
+    Function { Normal },                                              -- function name (also: methods for classes)
 
-    Statement      { fg = hsluv(253, 90, 65) }, -- (preferred) any statement
+    Statement { fg = hsluv(253, 90, 65) },                            -- (preferred) any statement
     -- Conditional    { Statement }, --  if, then, else, endif, switch, etc.
     -- Repeat         { Statement }, --   for, do, while, etc.
     -- Label          { Statement }, --    case, default, etc.
-    Operator       { fg = hsluv(190, 60, 90) }, -- "sizeof", "+", "*", etc.
+    Operator { fg = hsluv(190, 60, 90) },                 -- "sizeof", "+", "*", etc.
     -- Keyword        { Statement }, --  any other keyword
-    Exception      { fg = hsluv(253, 100, 60), gui = "bold" }, --  try, catch, throw
+    Exception { fg = hsluv(253, 100, 60), gui = "bold" }, --  try, catch, throw
 
-    PreProc        { fg = hsluv(112, 90, 80) }, -- (preferred) generic Preprocessor
+    PreProc { fg = hsluv(112, 90, 80) },                  -- (preferred) generic Preprocessor
     -- Include        { PreProc }, --  preprocessor #include
     -- Define         { PreProc }, --   preprocessor #define
     -- Macro          { PreProc }, --    same as Define
     -- PreCondit      { PreProc }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = hsluv(72, 80, 88) }, -- (preferred) int, long, char, etc.
+    Type { fg = hsluv(72, 80, 88) }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
-    Special        { fg = hsluv('#d75f87')}, -- (preferred) any special symbol
+    Special { fg = hsluv('#d75f87') }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
-    Delimiter      { fg = hsluv(0, 0, 70) }, --  character that needs attention
+    Delimiter { fg = hsluv(0, 0, 70) }, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
 
-    Error          { bg = hsluv('#900000'), fg = Normal.fg }, -- (preferred) any erroneous construct
-    Todo           { fg = strong_fg.lighten(10), gui = 'bold' }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Error { bg = hsluv('#900000'), fg = Normal.fg },                   -- (preferred) any erroneous construct
+    Todo { fg = strong_fg.lighten(10), gui = 'bold' },                 -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-    SpellBad     { gui = 'undercurl', sp = '#ff0000' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    SpellCap     { gui = 'undercurl', sp = '#eecc00' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    SpellLocal   { SpellCap }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    SpellRare    { SpellCap }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+    SpellBad { gui = 'undercurl', sp = '#ff0000' },                    -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    SpellCap { gui = 'undercurl', sp = '#eecc00' },                    -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpellLocal { SpellCap },                                           -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+    SpellRare { SpellCap },                                            -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
 
-    DiagnosticSignError             { bg = SignColumn.bg, fg = hsluv('#d70000') }, -- Used for "Error" signs in sign column
-    DiagnosticSignWarn              { bg = SignColumn.bg, fg = hsluv('#ff8700') }, -- Used for "Warning" signs in sign column
-    DiagnosticSignInfo              { bg = SignColumn.bg, fg = hsluv('#5fd7ff') }, -- Used for "Information" signs in sign column
-    DiagnosticSignHint              { DiagnosticSignInfo }, -- Used for "Hint" signs in sign column
+    DiagnosticSignError { bg = SignColumn.bg, fg = hsluv('#d70000') }, -- Used for "Error" signs in sign column
+    DiagnosticSignWarn { bg = SignColumn.bg, fg = hsluv('#ff8700') },  -- Used for "Warning" signs in sign column
+    DiagnosticSignInfo { bg = SignColumn.bg, fg = hsluv('#5fd7ff') },  -- Used for "Information" signs in sign column
+    DiagnosticSignHint { DiagnosticSignInfo },                         -- Used for "Hint" signs in sign column
 
-    DiagnosticNumError              { bg = hsluv('#870000') }, -- Used for "Error" signs in sign column
-    DiagnosticNumWarn               { bg = hsluv('#af5f00') }, -- Used for "Warning" signs in sign column
-    DiagnosticNumInfo               { }, -- Used for "Information" signs in sign column
-    DiagnosticNumHint               { DiagnosticNumInfo }, -- Used for "Hint" signs in sign column
+    DiagnosticNumError { bg = hsluv('#870000') },                      -- Used for "Error" signs in sign column
+    DiagnosticNumWarn { bg = hsluv('#af5f00') },                       -- Used for "Warning" signs in sign column
+    DiagnosticNumInfo {},                                              -- Used for "Information" signs in sign column
+    DiagnosticNumHint { DiagnosticNumInfo },                           -- Used for "Hint" signs in sign column
 
-    DiagnosticFloatingError         { NormalFloat }, -- Used to color "Error" diagnostic messages in diagnostics float
-    DiagnosticFloatingWarn          { NormalFloat }, -- Used to color "Warning" diagnostic messages in diagnostics float
-    DiagnosticFloatingInfo          { NormalFloat }, -- Used to color "Information" diagnostic messages in diagnostics float
-    DiagnosticFloatingHint          { NormalFloat }, -- Used to color "Hint" diagnostic messages in diagnostics float
+    DiagnosticFloatingError { NormalFloat },                           -- Used to color "Error" diagnostic messages in diagnostics float
+    DiagnosticFloatingWarn { NormalFloat },                            -- Used to color "Warning" diagnostic messages in diagnostics float
+    DiagnosticFloatingInfo { NormalFloat },                            -- Used to color "Information" diagnostic messages in diagnostics float
+    DiagnosticFloatingHint { NormalFloat },                            -- Used to color "Hint" diagnostic messages in diagnostics float
 
-    LspReferenceText                { Search }, -- used for highlighting "text" references
-    LspReferenceRead                { Search }, -- used for highlighting "read" references
-    LspReferenceWrite               { Search }, -- used for highlighting "write" references
+    LspReferenceText { bg = hsluv(50, 20, 25) }, -- used for highlighting "text" references
+    LspReferenceRead { LspReferenceText },                                       -- used for highlighting "read" references
+    LspReferenceWrite { LspReferenceText },                                      -- used for highlighting "write" references
 
     -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
-    helpHyperTextJump               { gui = "underline", fg = hsluv('#80b0ff') },
+    helpHyperTextJump { gui = "underline", fg = hsluv('#80b0ff') },
 
-    IndentGuidesEven                { fg = hsluv(0, 0, 40) },
-    IndentGuidesOdd                 { fg = hsluv(0, 0, 30) },
+    IndentGuidesEven { fg = hsluv(0, 0, 40) },
+    IndentGuidesOdd { fg = hsluv(0, 0, 30) },
 
     DapBreakpoint { fg = hsluv('#ff0000'), bg = SignColumn.bg },
     DapBreakpointCondition { fg = hsluv('#ff5500'), bg = SignColumn.bg },
@@ -258,25 +259,25 @@ local theme = lush(function(injected_functions)
     -- TSBoolean            { };    -- For booleans.
     -- TSCharacter          { };    -- For characters.
     -- TSComment            { };    -- For comment blocks.
-    sym('@constructor')     { Operator };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
+    sym('@constructor') { Operator }, -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
     -- TSConditional        { };    -- For keywords related to conditionnals.
     -- TSConstant           { };    -- For constants
-    sym('@constant.builtin')       { Constant };    -- For constant that are built in the language: `nil` in Lua.
+    sym('@constant.builtin') { Constant }, -- For constant that are built in the language: `nil` in Lua.
     -- TSConstMacro         { };    -- For constants that are defined by macros: `NULL` in C.
     -- TSError              { };    -- For syntax/parser errors.
     -- TSException          { };    -- For exception related keywords.
     -- TSField              { };    -- For fields.
     -- TSFloat              { };    -- For floats.
     -- TSFunction           { };    -- For function (calls and definitions).
-    sym('@function.builtin')        { Operator };    -- For builtin functions: `table.insert` in Lua.
+    sym('@function.builtin') { Operator }, -- For builtin functions: `table.insert` in Lua.
     -- TSFuncMacro          { };    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
     -- TSInclude            { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     -- TSKeyword            { };    -- For keywords that don't fall in previous categories.
     -- TSKeywordFunction    { };    -- For keywords used to define a fuction.
     -- TSLabel              { };    -- For labels: `label:` in C and `:label:` in Lua.
     -- TSMethod             { };    -- For method calls and definitions.
-    TSNamespace          { Identifier };    -- For identifiers referring to modules and namespaces.
-    sym('@lsp.type.namespace')        { Identifier };    -- For builtin functions: `table.insert` in Lua.
+    TSNamespace { Identifier },                -- For identifiers referring to modules and namespaces.
+    sym('@lsp.type.namespace') { Identifier }, -- For builtin functions: `table.insert` in Lua.
     -- TSNone               { };    -- TODO: docs
     -- TSNumber             { };    -- For all numbers
     -- TSOperator           { };    -- For any operator: `+`, but also `->` and `*` in C.
@@ -292,15 +293,15 @@ local theme = lush(function(injected_functions)
     -- TSStringEscape       { };    -- For escape characters within a string.
     -- TSSymbol             { };    -- For identifiers referring to symbols or atoms.
     -- TSType               { };    -- For types.
-    sym('@lsp.type.typeAlias')     { Type },
+    sym('@lsp.type.typeAlias') { Type },
     -- TSTypeBuiltin        { };    -- For builtin types.
     -- TSVariable           { };    -- Any variable name that does not have another highlight.
-    sym('@variable.builtin')    { fg = hsluv(350, 70, 70) },    -- Variable names that are defined by the languages, like `this` or `self`.
+    sym('@variable.builtin') { fg = hsluv(350, 70, 70) }, -- Variable names that are defined by the languages, like `this` or `self`.
     -- TSTag                { };    -- Tags like html tag names.
     -- TSTagDelimiter       { };    -- Tag delimiter like `<` `>` `/`
     -- TSText               { };    -- For strings considered text in a markup language.
-    sym('@text.note')    { Todo },    -- Variable names that are defined by the languages, like `this` or `self`.
-    sym('@text.danger')    { fg = hsluv(25, 100, 65) },    -- Variable names that are defined by the languages, like `this` or `self`.
+    sym('@text.note') { Todo },                      -- Variable names that are defined by the languages, like `this` or `self`.
+    sym('@text.danger') { fg = hsluv(25, 100, 65) }, -- Variable names that are defined by the languages, like `this` or `self`.
     sym('@lsp.type.comment') {},
     -- NOTE:
     -- TSEmphasis           { };    -- For text to be represented with emphasis.
